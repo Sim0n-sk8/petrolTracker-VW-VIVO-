@@ -671,9 +671,9 @@ select {
                 user_name: currentUser,
                 date: new Date().toISOString(),
                 amount: kilometers,  // This will be set to kilometers
-                fuel_price: fuelPrice,
-                fuel_used: fuelUsed,
-                total_cost: totalCost
+                 fuel_price: parseFloat(fuelPrice).toFixed(2),
+                fuel_used: parseFloat(fuelUsed.toFixed(2)),
+                total_cost: parseFloat(totalCost.toFixed(2))
             };
 
             // Ensure amount is valid before inserting
@@ -753,14 +753,14 @@ select {
                         // Use the correct 'amount' field
                         const kilometers = trip.amount !== undefined && trip.amount !== null ? trip.amount : 'N/A';
                         const fuelUsed = trip.fuel_used ? trip.fuel_used : 'N/A';
-                        const fuelPrice = trip.fuel_price ? trip.fuel_price : 'N/A';
+                       const fuelPrice = trip.fuel_price ? parseFloat(trip.fuel_price).toFixed(2) : 'N/A'
                         const totalCost = trip.total_cost ? Math.round(parseFloat(trip.total_cost)) : 'N/A';
 
                         row.innerHTML = `
                     <td>${formattedDate}</td>
                     <td>${kilometers}</td>
-                    <td>${fuelUsed}</td>
                     <td>R${fuelPrice}</td>
+                    <td>${fuelUsed}</td>
                     <td>R${totalCost}</td>
                     <td>${trip.user_name}</td>
                 `;
