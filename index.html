@@ -661,7 +661,7 @@ select {
                 return;
             }
 
-            // Calculate fuel used and total cost
+            // Calculate fuel used and total cost 
             const fuelUsed = kilometers / FUEL_EFFICIENCY;
            const totalCost = Math.round(fuelUsed * fuelPrice);
 
@@ -670,7 +670,7 @@ select {
             const tripData = {
                 user_name: currentUser,
                 date: new Date().toISOString(),
-                amount: kilometers,  // This will be set to kilometers
+                amount: kilometers,  
                  fuel_price: parseFloat(fuelPrice).toFixed(2),
                 fuel_used: parseFloat(fuelUsed.toFixed(2)),
                 total_cost: parseFloat(totalCost.toFixed(2))
@@ -702,7 +702,6 @@ select {
 
 
 
- // Updated loadLogs function
     async function loadLogs() {
             logsLoading.style.display = 'flex';
             noLogsMessage.style.display = 'none';
